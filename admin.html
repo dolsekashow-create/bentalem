@@ -17,7 +17,8 @@ body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);direc
 .login-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 30% 50%,rgba(232,115,41,0.08) 0%,transparent 70%);}
 .login-box{background:var(--card);border-radius:24px;padding:44px;width:400px;max-width:94vw;box-shadow:0 20px 60px rgba(0,0,0,0.12),0 0 0 1px rgba(232,115,41,0.1);position:relative;z-index:1;text-align:right;}
 .login-logo{display:flex;align-items:center;gap:12px;margin-bottom:24px;justify-content:center;}
-.login-logo .logo-placeholder{width:50px;height:50px;background:var(--primary-grad);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;font-weight:bold;box-shadow:0 6px 20px rgba(232,115,41,0.4);}
+.login-logo .logo-placeholder{width:50px;height:50px;background:var(--primary-grad);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;font-weight:bold;box-shadow:0 6px 20px rgba(232,115,41,0.4);animation:pg 3s ease-in-out infinite;}
+@keyframes pg{0%,100%{box-shadow:0 6px 20px rgba(232,115,41,0.4);}50%{box-shadow:0 6px 30px rgba(232,115,41,0.7),0 0 0 8px rgba(232,115,41,0.08);}}
 .login-logo-text{font-size:1.4rem;font-weight:900;background:var(--primary-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .login-title{text-align:center;font-size:1rem;font-weight:700;color:var(--text2);margin-bottom:28px;}
 .field-group{margin-bottom:16px;}
@@ -496,7 +497,7 @@ tr:hover td{background:rgba(232,115,41,0.02);}
             </div>
             <div class="form-actions"><button class="btn-cancel" onclick="toggleForm('partForm')">إلغاء</button><button class="btn-save" id="savePartBtn" onclick="savePart()"><i class="fas fa-save" style="margin-left:6px"></i>حفظ</button></div>
           </div>
-          <div class="dash-card"><div class="dc-head"><h3>قائمة الشركاء</h3></div><div class="dc-body" style="padding:0"><div class="table-wrap"><table><thead><tr><th>اسم الشريك</th><th>نوع</th><th>إجراءات</th></tr></thead><tbody id="partsTable"></tbody></table></div></div></div>
+          <div class="dash-card"><div class="dc-head"><h3>قائمة الشركاء</h3></div><div class="dc-body" style="padding:0"><div class="table-wrap"><tr><thead><tr><th>اسم الشريك</th><th>نوع</th><th>إجراءات</th></tr></thead><tbody id="partsTable"></tbody></table></div></div></div>
         </div>
 
         <!-- REGISTRATIONS PANEL -->
@@ -542,6 +543,30 @@ tr:hover td{background:rgba(232,115,41,0.02);}
               <div class="fg"><label>رابط يوتيوب</label><input type="url" id="setYt" placeholder="https://youtube.com/..."></div>
               <div class="form-actions"><button class="btn-save" onclick="saveContact()"><i class="fas fa-save" style="margin-left:6px"></i>حفظ</button></div>
             </div>
+            <!-- قسم رفع اللوجو الجديد -->
+            <div class="form-card">
+              <h3><i class="fas fa-image"></i>شعار المنصة (اللوجو)</h3>
+              <div class="fg">
+                <label>الصورة الحالية</label>
+                <div id="currentLogoPreview" style="margin-bottom:10px;">
+                  <img id="logoPreviewImg" src="" style="max-width:120px; max-height:120px; border-radius:12px; border:1px solid var(--border); display:none;">
+                </div>
+                <div class="img-upload-area" onclick="document.getElementById('logoUploadInput').click()">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                  <p>اضغط لرفع صورة اللوجو (PNG, JPG, SVG, WEBP)</p>
+                  <small>سيظهر في أعلى الموقع وأسفله</small>
+                </div>
+                <input type="file" id="logoUploadInput" accept="image/*" style="display:none" onchange="previewLogo(this)">
+                <div class="upload-progress" id="logoProgress"><i class="fas fa-spinner"></i>جاري الرفع...</div>
+              </div>
+              <div class="fg">
+                <label>كلمة المرور لتغيير الشعار <span style="color:var(--red);">*</span></label>
+                <input type="password" id="logoPassword" placeholder="أدخل كلمة المرور 1939">
+              </div>
+              <div class="form-actions">
+                <button class="btn-save" onclick="saveLogo()"><i class="fas fa-save" style="margin-left:6px"></i>حفظ الشعار</button>
+              </div>
+            </div>
           </div>
           <div class="form-card">
             <h3><i class="fas fa-key"></i>تغيير كلمة المرور</h3>
@@ -551,6 +576,7 @@ tr:hover td{background:rgba(232,115,41,0.02);}
             </div>
             <div class="form-actions"><button class="btn-save" onclick="changePw()"><i class="fas fa-save" style="margin-left:6px"></i>تغيير كلمة المرور</button></div>
           </div>
+          <!-- ZERO-NINE - PROTECTED -->
           <div class="zn-badge">
             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23E87329'/%3E%3Ctext x='50' y='68' text-anchor='middle' fill='white' font-size='40' font-weight='bold'%3E09%3C/text%3E%3C/svg%3E" alt="Zero-Nine" style="width:40px;height:40px;">
             <div class="zn-info">
@@ -645,7 +671,7 @@ function showPanel(id) {
     [...document.querySelectorAll('.ni')].find(n => n.getAttribute('onclick')?.includes("'" + id + "'"))?.classList.add('active');
     document.getElementById('pageTitle').textContent = ptitles[id] || '';
     closeSb();
-    const loaders = {slider:loadSlides, axes:loadAxes, courses:loadCourses, training:loadTraining, videos:loadVideos, programs:loadProgs, partners:loadParts, regs:loadRegs, stats:loadStatsInputs};
+    const loaders = {slider:loadSlides, axes:loadAxes, courses:loadCourses, training:loadTraining, videos:loadVideos, programs:loadProgs, partners:loadParts, regs:loadRegs, stats:loadStatsInputs, settings:loadLogo};
     if (loaders[id] && sb) loaders[id]();
 }
 
@@ -710,7 +736,7 @@ create table if not exists programs (id bigint generated always as identity prim
 create table if not exists partners (id bigint generated always as identity primary key, name text not null, type text, created_at timestamptz default now());
 create table if not exists registrations (id bigint generated always as identity primary key, name text not null, phone text, email text, type text, field text, note text, created_at timestamptz default now());
 create table if not exists site_stats (id int primary key default 1, trainees text default '500', progs text default '30', vols text default '300', parts text default '15');
-create table if not exists site_settings (id int primary key default 1, name text default 'Bentalem', tagline text, description text, email text, whatsapp text, facebook text, youtube text);
+create table if not exists site_settings (id int primary key default 1, name text default 'Bentalem', tagline text, description text, email text, whatsapp text, facebook text, youtube text, logo_url text);
 do $$ declare t text; tables text[] := array['hero_slides','axes','courses','training','videos','programs','partners','registrations','site_stats','site_settings']; begin foreach t in array tables loop execute format('alter table %I enable row level security', t); execute format('drop policy if exists "anon_all" on %I', t); execute format('create policy "anon_all" on %I for all to anon using (true) with check (true)', t); end loop; end $$;
 insert into storage.buckets (id, name, public) values ('bentalem', 'bentalem', true) on conflict (id) do update set public=true;
 drop policy if exists "Public bucket access" on storage.objects;
@@ -1062,6 +1088,64 @@ function changePw() {
     document.getElementById('pwOld').value = '';
     document.getElementById('pwNew').value = '';
     toast('✅ تم تغيير كلمة المرور بنجاح');
+}
+
+// ========== LOGO MANAGEMENT ==========
+async function loadLogo() {
+    if (!sb) return;
+    const { data } = await sb.from('site_settings').select('logo_url').eq('id',1).single();
+    if (data && data.logo_url) {
+        const img = document.getElementById('logoPreviewImg');
+        img.src = data.logo_url;
+        img.style.display = 'block';
+    }
+}
+
+function previewLogo(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        const img = document.getElementById('logoPreviewImg');
+        img.src = e.target.result;
+        img.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+}
+
+async function saveLogo() {
+    const password = document.getElementById('logoPassword').value;
+    if (password !== '1939') {
+        toast('❌ كلمة المرور غير صحيحة! لا يمكن تغيير الشعار.', 'error');
+        return;
+    }
+    const input = document.getElementById('logoUploadInput');
+    if (!input.files.length) {
+        toast('⚠️ اختر صورة أولاً', 'error');
+        return;
+    }
+    const file = input.files[0];
+    const ext = file.name.split('.').pop() || 'png';
+    const path = `logos/logo_${Date.now()}.${ext}`;
+    const prog = document.getElementById('logoProgress');
+    prog.style.display = 'block';
+    try {
+        const { error: uploadError } = await sb.storage.from('bentalem').upload(path, file, { cacheControl: '3600', upsert: true });
+        if (uploadError) throw uploadError;
+        const { data: urlData } = sb.storage.from('bentalem').getPublicUrl(path);
+        const logoUrl = urlData.publicUrl;
+        const { error: updateError } = await sb.from('site_settings').upsert({ id: 1, logo_url: logoUrl });
+        if (updateError) throw updateError;
+        toast('✅ تم تحديث شعار المنصة بنجاح');
+        document.getElementById('logoPassword').value = '';
+        document.getElementById('logoUploadInput').value = '';
+        loadLogo();
+    } catch(err) {
+        console.error(err);
+        toast('❌ فشل رفع الشعار: ' + err.message, 'error');
+    } finally {
+        prog.style.display = 'none';
+    }
 }
 
 // ========== ربط زر الدخول عند تحميل الصفحة ==========
