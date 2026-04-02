@@ -31,7 +31,7 @@ nav,main,footer,.float-btns { position:relative; z-index:10; }
 nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:rgba(245,243,239,0.80); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(232,115,41,0.1); padding:0 5%; height:70px; display:flex; align-items:center; justify-content:space-between; transition:all 0.3s; }
 nav.scrolled { background:rgba(245,243,239,0.96); box-shadow:0 4px 20px rgba(232,115,41,0.10); }
 .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
-.nav-logo .logo-icon { width:46px; height:46px; background:var(--primary-grad); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; color:#fff; box-shadow:0 4px 14px rgba(232,115,41,0.3); animation:pulseGlow 3s ease-in-out infinite; }
+.nav-logo img { width:46px; height:46px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(232,115,41,0.3); border:2px solid rgba(232,115,41,0.2); animation:pulseGlow 3s ease-in-out infinite; }
 .nav-logo-text { font-size:1.25rem; font-weight:900; background:var(--primary-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 @keyframes pulseGlow { 0%,100% { box-shadow:0 4px 14px rgba(232,115,41,0.3); } 50% { box-shadow:0 4px 24px rgba(232,115,41,0.6),0 0 0 6px rgba(232,115,41,0.08); } }
 .nav-links { display:flex; list-style:none; gap:4px; align-items:center; }
@@ -78,7 +78,8 @@ nav.scrolled { background:rgba(245,243,239,0.96); box-shadow:0 4px 20px rgba(232
 .ring-2 { width:82%; height:82%; border-color:rgba(245,166,82,0.35); animation-duration:12s; animation-direction:reverse; border-style:dashed; }
 .ring-3 { width:64%; height:64%; border-color:rgba(232,115,41,0.18); animation-duration:22s; }
 @keyframes rotateSpin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
-.hero-logo-center { position:relative; z-index:2; width:145px; height:145px; border-radius:50%; overflow:hidden; box-shadow:0 12px 40px rgba(232,115,41,0.35); animation:pulseGlow 3s ease-in-out infinite; background:var(--primary-grad); display:flex; align-items:center; justify-content:center; font-size:60px; color:#fff; }
+.hero-logo-center { position:relative; z-index:2; width:145px; height:145px; border-radius:50%; overflow:hidden; box-shadow:0 12px 40px rgba(232,115,41,0.35); animation:pulseGlow 3s ease-in-out infinite; }
+.hero-logo-center img { width:100%; height:100%; object-fit:cover; }
 
 /* STATS */
 .stats-bar { background:var(--white); padding:28px 5%; border-top:1px solid rgba(232,115,41,0.08); border-bottom:1px solid rgba(232,115,41,0.08); }
@@ -227,7 +228,7 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
 .footer-inner { max-width:1100px; margin:0 auto; }
 .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:36px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,0.08); }
 .footer-logo { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
-.footer-logo .logo-icon { width:38px; height:38px; background:var(--primary-grad); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; color:#fff; }
+.footer-logo img { width:38px; height:38px; border-radius:50%; object-fit:cover; }
 .footer-logo-text { font-size:1.1rem; font-weight:900; background:var(--primary-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 .footer-brand p { font-size:0.86rem; line-height:1.8; color:rgba(255,255,255,0.5); font-weight:500; margin-bottom:18px; }
 .footer-social { display:flex; gap:8px; }
@@ -264,7 +265,7 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
 .modal-close { position:absolute; top:14px; left:14px; background:var(--bg2); border:none; width:32px; height:32px; border-radius:8px; font-size:1rem; color:var(--muted); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
 .modal-close:hover { background:rgba(231,76,60,0.1); color:var(--red); }
 .modal-logo { display:flex; align-items:center; gap:10px; margin-bottom:20px; justify-content:center; }
-.modal-logo .logo-icon { width:46px; height:46px; background:var(--primary-grad); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; color:#fff; }
+.modal-logo img { width:46px; height:46px; border-radius:50%; object-fit:cover; }
 .modal-logo span { font-size:1.1rem; font-weight:900; background:var(--primary-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 .modal-title { font-size:1.2rem; font-weight:900; color:var(--text); margin-bottom:5px; text-align:center; }
 .modal-sub { font-size:0.84rem; color:var(--muted); text-align:center; margin-bottom:24px; font-weight:500; }
@@ -305,7 +306,7 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
 <!-- NAVBAR -->
 <nav id="mainNav">
   <a href="#" class="nav-logo">
-    <div class="logo-icon">ب</div>
+    <img id="navLogo" src="" alt="شعار المنصة" style="width:46px; height:46px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(232,115,41,0.3); border:2px solid rgba(232,115,41,0.2); animation:pulseGlow 3s ease-in-out infinite;">
     <span class="nav-logo-text">بِنتعلّم</span>
   </a>
   <ul class="nav-links" id="navLinks">
@@ -362,7 +363,9 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
           <div class="ring ring-1"></div>
           <div class="ring ring-2"></div>
           <div class="ring ring-3"></div>
-          <div class="hero-logo-center">ب</div>
+          <div class="hero-logo-center">
+            <img id="heroLogo" src="" alt="شعار المنصة" style="width:100%; height:100%; object-fit:cover;">
+          </div>
         </div>
       </div>
     </div>
@@ -502,7 +505,7 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">
-          <div class="logo-icon">ب</div>
+          <img id="footerLogo" src="" alt="شعار المنصة" style="width:38px; height:38px; border-radius:50%; object-fit:cover;">
           <span class="footer-logo-text">بِنتعلّم</span>
         </div>
         <p>مبادرة شبابية تطوعية تهدف إلى بناء قدرات الشباب والمتطوعين في مجالات العمل الإنساني والتنموي.</p>
@@ -543,7 +546,7 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('regModal')"><i class="fas fa-times"></i></button>
     <div class="modal-logo">
-      <div class="logo-icon">ب</div>
+      <img id="modalLogo" src="" alt="شعار المنصة" style="width:46px; height:46px; border-radius:50%; object-fit:cover;">
       <span>بِنتعلّم</span>
     </div>
     <div class="modal-title">التسجيل في منصة بِنتعلّم</div>
@@ -767,6 +770,20 @@ function loadStats(stats){
   sO.observe(document.querySelector('.stats-bar'));
 }
 
+// ===== LOAD LOGO FROM SUPABASE =====
+async function loadLogo() {
+  try {
+    const { data } = await sb.from('site_settings').select('logo_url').eq('id', 1).single();
+    if (data && data.logo_url) {
+      const logoUrl = data.logo_url;
+      document.getElementById('navLogo').src = logoUrl;
+      document.getElementById('footerLogo').src = logoUrl;
+      document.getElementById('heroLogo').src = logoUrl;
+      document.getElementById('modalLogo').src = logoUrl;
+    }
+  } catch(e) { console.warn('Logo load error', e); }
+}
+
 // ===== FETCH ALL DATA FROM SUPABASE =====
 async function loadAll(){
   try {
@@ -782,6 +799,7 @@ async function loadAll(){
     renderVideos(videos||[]);
     const {data:stats} = await sb.from('site_stats').select('*').eq('id',1).single();
     loadStats(stats);
+    await loadLogo(); // load logo after other data
   } catch(e){
     console.warn('Supabase load error, using defaults:', e);
     renderFeatures([]);renderCourses([]);renderTraining([]);renderVideos([]);
