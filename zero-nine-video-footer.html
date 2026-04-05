@@ -1,0 +1,65 @@
+<!-- ============================================= -->
+<!-- Zero-Nine Video Credit Section               -->
+<!-- ============================================= -->
+<!-- ملفات مطلوبة: zero-nine-intro.mp4             -->
+<!-- ============================================= -->
+
+
+<!-- ========== CSS (ضيفه جوه <style>) ========== -->
+
+<style>
+/* ZERO-NINE VIDEO FOOTER CREDIT */
+.footer-bottom {
+  padding: 28px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.footer-dev-frame {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 2px solid rgba(193,154,91,0.35);
+  text-decoration: none;
+  transition: all 0.3s;
+  max-width: 420px;
+  width: 90%;
+}
+
+.footer-dev-frame::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(193,154,91,0.15);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.footer-dev-frame:hover {
+  border-color: rgba(193,154,91,0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(193,154,91,0.15);
+}
+
+.footer-dev-video {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+}
+</style>
+
+
+<!-- ========== HTML (ضيفه جوه <footer>) ========== -->
+
+<div class="footer-bottom">
+  <span class="footer-copy">© 2025 اسم الموقع — جميع الحقوق محفوظة</span>
+  <a href="https://zero-nine-rose.vercel.app/" target="_blank" class="footer-dev-frame">
+    <video class="footer-dev-video" autoplay loop muted playsinline>
+      <source src="zero-nine-intro.mp4" type="video/mp4">
+    </video>
+  </a>
+</div>
