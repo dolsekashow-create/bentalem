@@ -885,4 +885,17 @@ function quickRegister(){
 
 // ===== TOAST =====
 function showToast(msg,dur=3500){
-  const t=document.
+  const t=document.getElementById('toast');
+  if(!t)return;
+  t.textContent=msg;
+  t.style.display='block';
+  t.style.opacity='1';
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>{
+    t.style.opacity='0';
+    setTimeout(()=>t.style.display='none',300);
+  },dur);
+}
+</script>
+</body>
+</html>
