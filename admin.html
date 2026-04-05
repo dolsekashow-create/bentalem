@@ -488,16 +488,17 @@ tr:hover td{background:rgba(232,115,41,0.02);}
 
         <!-- PARTNERS PANEL -->
         <div class="panel" id="panel-partners">
-          <div class="panel-head"><div><h2><i class="fas fa-handshake" style="color:var(--primary);margin-left:8px"></i>الشركاء</h2></div><button class="btn-add" onclick="toggleForm('partForm')"><i class="fas fa-plus"></i>إضافة</button></div>
+          <div class="panel-head"><div><h2><i class="fas fa-handshake" style="color:var(--primary);margin-left:8px"></i>الشركاء والداعمون</h2><p>إضافة وتعديل وحذف الشركاء — التغييرات تظهر مباشرة في الموقع</p></div><button class="btn-add" onclick="toggleForm('partForm')"><i class="fas fa-plus"></i>إضافة شريك</button></div>
           <div class="form-card" id="partForm" style="display:none">
-            <h3><i class="fas fa-building"></i>إضافة شريك</h3>
+            <h3><i class="fas fa-building"></i><span id="partFormTitle">إضافة شريك</span></h3>
+            <input type="hidden" id="ptEditId" value="">
             <div class="form-row">
               <div class="fg"><label>اسم الشريك *</label><input type="text" id="ptName" placeholder="مثال: الهلال الأحمر"></div>
               <div class="fg"><label>نوع الشراكة</label><select id="ptType"><option value="حكومي">حكومي</option><option value="دولي">دولي</option><option value="محلي">محلي</option><option value="مانح">مانح</option></select></div>
             </div>
-            <div class="form-actions"><button class="btn-cancel" onclick="toggleForm('partForm')">إلغاء</button><button class="btn-save" id="savePartBtn" onclick="savePart()"><i class="fas fa-save" style="margin-left:6px"></i>حفظ</button></div>
+            <div class="form-actions"><button class="btn-cancel" onclick="toggleForm('partForm');resetPartForm()">إلغاء</button><button class="btn-save" id="savePartBtn" onclick="savePart()"><i class="fas fa-save" style="margin-left:6px"></i>حفظ</button></div>
           </div>
-          <div class="dash-card"><div class="dc-head"><h3>قائمة الشركاء</h3></div><div class="dc-body" style="padding:0"><div class="table-wrap"><tr><thead><tr><th>اسم الشريك</th><th>نوع</th><th>إجراءات</th></tr></thead><tbody id="partsTable"></tbody></table></div></div></div>
+          <div class="dash-card"><div class="dc-head"><h3>قائمة الشركاء</h3></div><div class="dc-body" style="padding:0"><div class="table-wrap"><table><thead><tr><th>اسم الشريك</th><th>نوع</th><th>إجراءات</th></tr></thead><tbody id="partsTable"></tbody></table></div></div></div>
         </div>
 
         <!-- REGISTRATIONS PANEL -->
@@ -990,7 +991,23 @@ async function loadParts() {
     const parts = data || [];
     const tb = document.getElementById('partsTable');
     if (!parts.length) { tb.innerHTML = '<tr><td colspan="3"><div class="empty" style="padding:24px"><i class="fas fa-building"></i><p>لا يوجد شركاء</p></div></td></tr>'; return; }
-    tb.innerHTML = parts.map(p => `<tr><td><strong>${p.name}</strong></td><td><span class="chip ${tcol[p.type]||'blue'}">${p.type}</span></td><td><div class="td-actions"><button class="ta-btn del" onclick="deleteRow(\'partners\',${p.id},loadParts)"><i class="fas fa-trash"></i></button></div></td></tr>`).join('');
+    tb.innerHTML = parts.map(p => `<tr><td><strong>${p.name}</strong></td><td><span class="chip ${tcol[p.type]||'blue'}">${p.type}</span></td><td><div class="td-actions"><button class="ta-btn edit" onclick="editPart(${p.id},'${p.name.replace(/'/g,"\\'")}','${(p.type||'').replace(/'/g,"\\'")}')" title="تعديل"><i class="fas fa-pen"></i></button><button class="ta-btn del" onclick="deleteRow('partners',${p.id},loadParts)" title="حذف"><i class="fas fa-trash"></i></button></div></td></tr>`).join('');
+}
+
+function editPart(id, name, type) {
+    document.getElementById('ptEditId').value = id;
+    document.getElementById('ptName').value = name;
+    document.getElementById('ptType').value = type || 'حكومي';
+    document.getElementById('partFormTitle').textContent = 'تعديل شريك';
+    document.getElementById('partForm').style.display = 'block';
+    document.getElementById('partForm').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function resetPartForm() {
+    document.getElementById('ptEditId').value = '';
+    document.getElementById('ptName').value = '';
+    document.getElementById('ptType').value = 'حكومي';
+    document.getElementById('partFormTitle').textContent = 'إضافة شريك';
 }
 
 async function savePart() {
@@ -998,12 +1015,22 @@ async function savePart() {
     const name = document.getElementById('ptName').value.trim();
     if (!name) { toast('❌ أدخل اسم الشريك', 'error'); return; }
     const btn = document.getElementById('savePartBtn'); btn.disabled = true;
-    const { error } = await sb.from('partners').insert({ name, type: document.getElementById('ptType').value });
+    const editId = document.getElementById('ptEditId').value;
+    const payload = { name, type: document.getElementById('ptType').value };
+    let error;
+    if (editId) {
+        const r = await sb.from('partners').update(payload).eq('id', editId);
+        error = r.error;
+    } else {
+        const r = await sb.from('partners').insert(payload);
+        error = r.error;
+    }
     btn.disabled = false;
     if (error) { toast('❌ خطأ: ' + error.message, 'error'); return; }
     toggleForm('partForm');
-    document.getElementById('ptName').value = '';
-    toast('✅ تم إضافة الشريك');
+    resetPartForm();
+    toast(editId ? '✅ تم تعديل الشريك' : '✅ تم إضافة الشريك');
+    addAct(editId ? 'تم تعديل شريك: ' + name : 'تم إضافة شريك: ' + name);
     loadParts();
 }
 
