@@ -28,10 +28,10 @@ body { font-family:'Cairo',sans-serif; background:var(--bg); color:var(--text); 
 nav,main,footer,.float-btns { position:relative; z-index:10; }
 
 /* NAVBAR */
-nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:rgba(245,243,239,0.80); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(232,115,41,0.1); padding:0 5%; height:70px; display:flex; align-items:center; justify-content:space-between; transition:all 0.3s; }
+nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:rgba(245,243,239,0.80); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(232,115,41,0.1); padding:0 5%; height:85px; display:flex; align-items:center; justify-content:space-between; transition:all 0.3s; }
 nav.scrolled { background:rgba(245,243,239,0.96); box-shadow:0 4px 20px rgba(232,115,41,0.10); }
 .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
-.nav-logo img { width:46px; height:46px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(232,115,41,0.3); border:2px solid rgba(232,115,41,0.2); animation:pulseGlow 3s ease-in-out infinite; }
+.nav-logo img { width:70px; height:70px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(232,115,41,0.3); border:2px solid rgba(232,115,41,0.2); animation:pulseGlow 3s ease-in-out infinite; }
 .nav-logo-text { font-size:1.25rem; font-weight:900; background:var(--primary-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 @keyframes pulseGlow { 0%,100% { box-shadow:0 4px 14px rgba(232,115,41,0.3); } 50% { box-shadow:0 4px 24px rgba(232,115,41,0.6),0 0 0 6px rgba(232,115,41,0.08); } }
 .nav-links { display:flex; list-style:none; gap:4px; align-items:center; }
@@ -296,7 +296,7 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
 /* RESPONSIVE */
 @media(max-width:1024px) { .features-grid,.programs-grid { grid-template-columns:repeat(2,1fr); } .steps-grid { grid-template-columns:repeat(2,1fr); } .steps-grid::before { display:none; } .footer-top { grid-template-columns:1fr 1fr; gap:26px; } }
 @media(max-width:768px) { .hero-inner { grid-template-columns:1fr; gap:32px; } .hero-visual { order:-1; } .hero-logo-wrap { width:180px; height:180px; } .hero-logo-center { width:100px; height:100px; } .about-inner { grid-template-columns:1fr; gap:26px; } .stats-inner { grid-template-columns:repeat(2,1fr); } .stat-item:nth-child(2),.stat-item:nth-child(4) { border-left:none; } .stat-item { border-bottom:1px solid rgba(232,115,41,0.1); } .reg-row { grid-template-columns:1fr; } }
-@media(max-width:680px) { .nav-links { display:none; } .nav-links.open { display:flex; flex-direction:column; position:fixed; inset:70px 0 0 0; background:rgba(245,243,239,0.98); backdrop-filter:blur(20px); padding:24px 5%; gap:2px; z-index:999; overflow-y:auto; } .nav-links.open a { padding:13px; font-size:0.95rem; border-bottom:1px solid rgba(232,115,41,0.07); } .nav-toggle { display:block; } nav { padding:0 4%; } .features-grid { grid-template-columns:1fr; } .programs-grid { grid-template-columns:1fr; } .steps-grid { grid-template-columns:1fr; } .footer-top { grid-template-columns:1fr; gap:22px; } .footer-bottom { flex-direction:column; text-align:center; } section { padding:56px 4%; } .hero-logo-wrap { width:150px; height:150px; } .hero-logo-center { width:88px; height:88px; } .training-grid { grid-template-columns:1fr; } }
+@media(max-width:680px) { .nav-links { display:none; } .nav-links.open { display:flex; flex-direction:column; position:fixed; inset:85px 0 0 0; background:rgba(245,243,239,0.98); backdrop-filter:blur(20px); padding:24px 5%; gap:2px; z-index:999; overflow-y:auto; } .nav-links.open a { padding:13px; font-size:0.95rem; border-bottom:1px solid rgba(232,115,41,0.07); } .nav-toggle { display:block; } nav { padding:0 4%; } .features-grid { grid-template-columns:1fr; } .programs-grid { grid-template-columns:1fr; } .steps-grid { grid-template-columns:1fr; } .footer-top { grid-template-columns:1fr; gap:22px; } .footer-bottom { flex-direction:column; text-align:center; } section { padding:56px 4%; } .hero-logo-wrap { width:150px; height:150px; } .hero-logo-center { width:88px; height:88px; } .training-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -306,8 +306,8 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
 <!-- NAVBAR -->
 <nav id="mainNav">
   <a href="#" class="nav-logo">
-    <img id="navLogo" src="" alt="شعار المنصة" style="width:46px; height:46px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(232,115,41,0.3); border:2px solid rgba(232,115,41,0.2); animation:pulseGlow 3s ease-in-out infinite;">
-    <span class="nav-logo-text">بِنتعلّم</span>
+    <img id="navLogo" src="" alt="شعار المنصة" style="width:70px; height:70px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(232,115,41,0.3); border:2px solid rgba(232,115,41,0.2); animation:pulseGlow 3s ease-in-out infinite;">
+    <span class="nav-logo-text">منصة بِنتعلّم</span>
   </a>
   <ul class="nav-links" id="navLinks">
     <a href="#about">من نحن</a>
@@ -342,9 +342,9 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
   <div class="hero-content-wrap">
     <div class="hero-inner">
       <div class="hero-content reveal">
-        <div class="hero-badge"><i class="fas fa-star"></i> مبادرة شبابية تطوعية سودانية</div>
+        <div class="hero-badge"><i class="fas fa-star"></i> منصة</div>
         <h1 class="hero-title">بِنتعلّم<br><span>لبناء القدرات</span><br>من أجل تنمية مجتمعاتنا</h1>
-        <p class="hero-desc">معًا نصنع التغيير من خلال المعرفة، التدريب، والعمل التطوعي الهادف في ولايات القضارف والجزيرة والخرطوم.</p>
+        <p class="hero-desc">معًا نصنع التغيير من خلال المعرفة، التدريب، والعمل التطوعي الهادف في ولايات الجزيرة والخرطوم.</p>
         <div class="hero-cta-box">
           <span class="cta-label"><i class="fas fa-user-plus" style="color:var(--primary);margin-left:6px"></i>انضم إلى مجتمعنا الآن</span>
           <div class="cta-input-row">
@@ -399,8 +399,8 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
   <div class="about-inner">
     <div class="about-card reveal">
       <span class="about-tag">من نحن</span>
-      <h2>منصة بِنتعلّم<br>مبادرة تطوعية شبابية</h2>
-      <p>منصة بِنتعلّم هي مبادرة شبابية تطوعية بولايات القضارف والجزيرة والخرطوم، تهدف إلى بناء قدرات الشباب والمتطوعين في مجالات العمل الإنساني والتنموي.</p>
+      <h2>منصة بِنتعلّم<br>منظمة تطوعية شبابية</h2>
+      <p>منصة بِنتعلّم هي منظمة شبابية تطوعية بولايات الجزيرة والخرطوم، تهدف إلى بناء قدرات الشباب والمتطوعين في مجالات العمل الإنساني والتنموي.</p>
       <div class="about-vision"><i class="fas fa-eye" style="color:var(--primary);margin-left:8px"></i>الرؤية: تمكين الشباب وبناء مجتمع واعٍ ومبادر، يملك المهارات التي تؤهله لصناعة التغيير الإيجابي.</div>
       <ul class="about-goals">
         <li><i class="fas fa-check-circle"></i>تعزيز التماسك الاجتماعي ونشر ثقافة العمل التطوعي</li>
@@ -411,7 +411,7 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
       </ul>
     </div>
     <div class="about-right reveal" style="transition-delay:.15s">
-      <div class="about-stat-card"><div class="asc-icon" style="background:rgba(232,115,41,0.12)"><i class="fas fa-map-marker-alt" style="color:var(--primary)"></i></div><div class="asc-info"><h4>3 ولايات</h4><p>القضارف • الجزيرة • الخرطوم</p></div></div>
+      <div class="about-stat-card"><div class="asc-icon" style="background:rgba(232,115,41,0.12)"><i class="fas fa-map-marker-alt" style="color:var(--primary)"></i></div><div class="asc-info"><h4>2 ولايات</h4><p>الجزيرة • الخرطوم</p></div></div>
       <div class="about-stat-card"><div class="asc-icon" style="background:rgba(41,128,185,0.12)"><i class="fas fa-users" style="color:var(--blue)"></i></div><div class="asc-info"><h4>+20,000</h4><p>مستفيد من مبادراتنا الإنسانية</p></div></div>
       <div class="about-stat-card"><div class="asc-icon" style="background:rgba(39,174,96,0.12)"><i class="fas fa-award" style="color:var(--green)"></i></div><div class="asc-info"><h4>متطوع فاعل</h4><p>شبكة من المتطوعين المدربين والمعتمدين</p></div></div>
       <div class="about-stat-card"><div class="asc-icon" style="background:rgba(243,156,18,0.12)"><i class="fas fa-handshake" style="color:var(--yellow)"></i></div><div class="asc-info"><h4>شراكات فاعلة</h4><p>تعاون مع الجهات الحكومية والمنظمات الدولية</p></div></div>
@@ -439,9 +439,7 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
     <p class="section-sub">برامج تدريبية أُنجزت بنجاح في مجالات متعددة</p>
   </div>
   <div class="programs-grid" id="programsGrid">
-    <div class="prog-card reveal"><div class="prog-img" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)"><i class="fas fa-sign-language" style="position:relative;z-index:1;color:#2980b9"></i></div><div class="prog-body"><span class="prog-cat training">تدريب</span><h3>دورة لغة الإشارة</h3><p>تدريب المتطوعين على لغة الإشارة ضمن برامج الدمج المجتمعي، بالتعاون مع معهد الأمل.</p></div><div class="prog-footer"><span class="prog-count"><i class="fas fa-user-graduate"></i>60 متدرب</span><a href="#" class="prog-link">التفاصيل <i class="fas fa-arrow-left"></i></a></div></div>
-    <div class="prog-card reveal" style="transition-delay:.1s"><div class="prog-img" style="background:linear-gradient(135deg,#fee2e2,#fecaca)"><i class="fas fa-heart" style="position:relative;z-index:1;color:#e74c3c"></i></div><div class="prog-body"><span class="prog-cat humanitarian">إنساني</span><h3>مبادرة "سباقون للخير"</h3><p>مشروع إنساني لكساء 20,000 طالب نازح بمراكز الإيواء بالتعاون مع وزارة التربية.</p></div><div class="prog-footer"><span class="prog-count"><i class="fas fa-child"></i>20,000 مستفيد</span><a href="#" class="prog-link">التفاصيل <i class="fas fa-arrow-left"></i></a></div></div>
-    <div class="prog-card reveal" style="transition-delay:.2s"><div class="prog-img" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)"><i class="fas fa-hand-holding-heart" style="position:relative;z-index:1;color:#27ae60"></i></div><div class="prog-body"><span class="prog-cat community">مجتمعي</span><h3>بناء القدرات – الهلال الأحمر</h3><p>تدريب 75 متطوعًا على مهارات العمل التطوعي وكتابة التقارير، تحت إشراف المجلس الأعلى للشباب.</p></div><div class="prog-footer"><span class="prog-count"><i class="fas fa-users"></i>75 متطوع</span><a href="#" class="prog-link">التفاصيل <i class="fas fa-arrow-left"></i></a></div></div>
+    <div class="sb-loader" style="grid-column:1/-1"><i class="fas fa-spinner"></i><p>جاري التحميل...</p></div>
   </div>
 </section>
 
@@ -491,9 +489,8 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
     <h2 class="section-title">الشركاء <span>والداعمون</span></h2>
   </div>
   <div class="partners-track-wrap reveal">
-    <div class="partners-track">
-      <div class="partner-logo">الهلال الأحمر السوداني</div><div class="partner-logo">وزارة التربية</div><div class="partner-logo">المجلس الأعلى للشباب</div><div class="partner-logo">معهد الأمل</div><div class="partner-logo">منظمة يونيسف</div><div class="partner-logo">الهجرة الدولية</div><div class="partner-logo">إنقاذ الطفولة</div><div class="partner-logo">بنك الخرطوم</div>
-      <div class="partner-logo">الهلال الأحمر السوداني</div><div class="partner-logo">وزارة التربية</div><div class="partner-logo">المجلس الأعلى للشباب</div><div class="partner-logo">معهد الأمل</div><div class="partner-logo">منظمة يونيسف</div><div class="partner-logo">الهجرة الدولية</div><div class="partner-logo">إنقاذ الطفولة</div><div class="partner-logo">بنك الخرطوم</div>
+    <div class="partners-track" id="partnersTrack">
+      <div class="partner-logo">جاري التحميل...</div>
     </div>
   </div>
 </section>
@@ -506,9 +503,9 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
       <div class="footer-brand">
         <div class="footer-logo">
           <img id="footerLogo" src="" alt="شعار المنصة" style="width:38px; height:38px; border-radius:50%; object-fit:cover;">
-          <span class="footer-logo-text">بِنتعلّم</span>
+          <span class="footer-logo-text">منصة بِنتعلّم</span>
         </div>
-        <p>مبادرة شبابية تطوعية تهدف إلى بناء قدرات الشباب والمتطوعين في مجالات العمل الإنساني والتنموي.</p>
+        <p>منظمة شبابية تطوعية تهدف إلى بناء قدرات الشباب والمتطوعين في مجالات العمل الإنساني والتنموي.</p>
         <div class="footer-social">
           <a href="#" class="soc-btn"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="soc-btn"><i class="fab fa-twitter"></i></a>
@@ -519,7 +516,7 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
       </div>
       <div class="footer-col"><h4>روابط سريعة</h4><ul><li><a href="#about">من نحن</a></li><li><a href="#features">محاور المنصة</a></li><li><a href="#courses">الدورات المفتوحة</a></li><li><a href="#programs">البرامج التدريبية</a></li><li><a href="#training">التدريب</a></li></ul></div>
       <div class="footer-col"><h4>الخدمات</h4><ul><li><a href="#" onclick="openModal('regModal')">التسجيل كمتطوع</a></li><li><a href="#courses">الدورات المفتوحة</a></li><li><a href="#programs">المشروعات الإنتاجية</a></li><li><a href="#videos">الفيديوهات</a></li></ul></div>
-      <div class="footer-col"><h4>تواصل معنا</h4><div class="contact-item"><i class="fas fa-map-marker-alt"></i>القضارف، السودان</div><div class="contact-item"><i class="fas fa-envelope"></i>info@bentalem.online</div><div class="contact-item"><i class="fab fa-whatsapp"></i>00249912993786</div><div class="contact-item"><i class="fas fa-globe"></i>bentalem.online</div></div>
+      <div class="footer-col"><h4>تواصل معنا</h4><div class="contact-item"><i class="fas fa-map-marker-alt"></i>السودان</div><div class="contact-item"><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a33343c351a383f342e3b363f377435343633343f">[email&#160;protected]</a></div><div class="contact-item"><i class="fab fa-whatsapp"></i>00249912993786</div><div class="contact-item"><i class="fas fa-phone"></i>00249912477616</div><div class="contact-item"><i class="fas fa-phone"></i>00249923503896</div><div class="contact-item"><i class="fas fa-phone"></i>00249128855444</div><div class="contact-item"><i class="fas fa-phone"></i>00249122729721</div><div class="contact-item"><i class="fas fa-globe"></i>bentalem.online</div></div>
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">© 2025 منصة بِنتعلّم — جميع الحقوق محفوظة</span>
@@ -600,7 +597,7 @@ footer { background:var(--text); color:rgba(255,255,255,0.85); padding:56px 5% 0
 <!-- TOAST -->
 <div id="toast" style="display:none;position:fixed;bottom:90px;right:24px;z-index:3000;background:var(--text);color:#fff;padding:12px 20px;border-radius:12px;font-size:0.86rem;font-weight:700;font-family:'Cairo',sans-serif;box-shadow:0 8px 24px rgba(0,0,0,0.2);border-right:3px solid var(--primary);max-width:90vw;"></div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ===== SUPABASE =====
 const { createClient } = supabase;
 const sb = createClient('https://sbfwmctjxrddwnldjafw.supabase.co', 'sb_publishable_E_YrTw2zDR--HcpUUAewSQ_FUYLYZqU');
@@ -784,6 +781,36 @@ async function loadLogo() {
   } catch(e) { console.warn('Logo load error', e); }
 }
 
+// ===== RENDER PROGRAMS FROM SUPABASE =====
+const progCatColors = {training:{bg:'linear-gradient(135deg,#dbeafe,#bfdbfe)',color:'#2980b9',icon:'fa-chalkboard-teacher',label:'تدريب'},humanitarian:{bg:'linear-gradient(135deg,#fee2e2,#fecaca)',color:'#e74c3c',icon:'fa-heart',label:'إنساني'},community:{bg:'linear-gradient(135deg,#dcfce7,#bbf7d0)',color:'#27ae60',icon:'fa-hand-holding-heart',label:'مجتمعي'}};
+function renderPrograms(progs){
+  const grid=document.getElementById('programsGrid');
+  const defaultProgs=[
+    {name:'دورة لغة الإشارة',cat:'training',count:'60 متدرب',description:'تدريب المتطوعين على لغة الإشارة ضمن برامج الدمج المجتمعي، بالتعاون مع معهد الأمل.'},
+    {name:'منظمة "سباقون للخير"',cat:'humanitarian',count:'20,000 مستفيد',description:'مشروع إنساني لكساء 20,000 طالب نازح بمراكز الإيواء بالتعاون مع وزارة التربية.'},
+    {name:'بناء القدرات – الهلال الأحمر',cat:'community',count:'75 متطوع',description:'تدريب 75 متطوعًا على مهارات العمل التطوعي وكتابة التقارير، تحت إشراف المجلس الأعلى للشباب.'}
+  ];
+  const data=(progs&&progs.length)?progs:defaultProgs;
+  grid.innerHTML=data.map((p,i)=>{
+    const c=progCatColors[p.cat]||progCatColors.training;
+    return `<div class="prog-card reveal" style="transition-delay:${(i%3)*0.1}s">
+      <div class="prog-img" style="background:${c.bg}"><i class="fas ${c.icon}" style="position:relative;z-index:1;color:${c.color}"></i></div>
+      <div class="prog-body"><span class="prog-cat ${p.cat||'training'}">${c.label}</span><h3>${p.name}</h3><p>${p.description||''}</p></div>
+      <div class="prog-footer"><span class="prog-count"><i class="fas fa-users"></i>${p.count||'0'} مشارك</span><a href="#" class="prog-link">التفاصيل <i class="fas fa-arrow-left"></i></a></div>
+    </div>`;
+  }).join('');
+  observeReveal();
+}
+
+// ===== RENDER PARTNERS FROM SUPABASE =====
+function renderPartners(parts){
+  const track=document.getElementById('partnersTrack');
+  const defaultParts=['الهلال الأحمر السوداني','وزارة التربية','المجلس الأعلى للشباب','معهد الأمل'];
+  let names=(parts&&parts.length)?parts.map(p=>p.name):defaultParts;
+  const doubled=[...names,...names];
+  track.innerHTML=doubled.map(n=>`<div class="partner-logo">${n}</div>`).join('');
+}
+
 // ===== FETCH ALL DATA FROM SUPABASE =====
 async function loadAll(){
   try {
@@ -797,12 +824,16 @@ async function loadAll(){
     renderTraining(training||[]);
     const {data:videos} = await sb.from('videos').select('*').order('created_at',{ascending:false});
     renderVideos(videos||[]);
+    const {data:programs} = await sb.from('programs').select('*').order('created_at',{ascending:false});
+    renderPrograms(programs||[]);
+    const {data:partners} = await sb.from('partners').select('*').order('created_at',{ascending:false});
+    renderPartners(partners||[]);
     const {data:stats} = await sb.from('site_stats').select('*').eq('id',1).single();
     loadStats(stats);
     await loadLogo(); // load logo after other data
   } catch(e){
     console.warn('Supabase load error, using defaults:', e);
-    renderFeatures([]);renderCourses([]);renderTraining([]);renderVideos([]);
+    renderFeatures([]);renderCourses([]);renderTraining([]);renderVideos([]);renderPrograms([]);renderPartners([]);
     initSlider([]);
   }
 }
@@ -854,10 +885,4 @@ function quickRegister(){
 
 // ===== TOAST =====
 function showToast(msg,dur=3500){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.style.display='block';t.style.opacity='1';
-  clearTimeout(t._t);t._t=setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.style.display='none',300);},dur);
-}
-</script>
-</body>
-</html>
+  const t=document.
