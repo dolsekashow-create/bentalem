@@ -1154,4 +1154,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginBtn) loginBtn.onclick = doLogin;
     const lgUser = document.getElementById('lgUser');
     const lgPass = document.getElementById('lgPass');
-    if (lgUser && lgPass
+    if (lgUser && lgPass) {
+        lgPass.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') doLogin();
+        });
+        lgUser.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') lgPass.focus();
+        });
+    }
+});
+</script>
+</body>
+</html>
