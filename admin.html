@@ -263,7 +263,7 @@ tr:hover td{background:rgba(232,115,41,0.02);}
       <div class="sb-foot">
         <div class="sb-user">
           <div class="sb-av">أ</div>
-          <div class="sb-ui"><p>مدير النظام</p><span>admin@bentalem.online</span></div>
+          <div class="sb-ui"><p>مدير النظام</p><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="39585d545057795b5c574d58555c541756575550575c">[email&#160;protected]</a></span></div>
           <button class="sb-out" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i></button>
         </div>
       </div>
@@ -532,7 +532,7 @@ tr:hover td{background:rgba(232,115,41,0.02);}
               <h3><i class="fas fa-info-circle"></i>معلومات المنصة</h3>
               <div class="fg"><label>اسم المنصة</label><input type="text" id="setName" value="بِنتعلّم"></div>
               <div class="fg"><label>الشعار الفرعي</label><input type="text" id="setTag" value="منصة بناء القدرات من أجل تنمية مجتمعاتنا"></div>
-              <div class="fg"><label>الوصف</label><textarea id="setDesc">مبادرة شبابية تطوعية لبناء قدرات الشباب.</textarea></div>
+              <div class="fg"><label>الوصف</label><textarea id="setDesc">منظمة شبابية تطوعية لبناء قدرات الشباب.</textarea></div>
               <div class="form-actions"><button class="btn-save" onclick="saveSettings()"><i class="fas fa-save" style="margin-left:6px"></i>حفظ</button></div>
             </div>
             <div class="form-card">
@@ -605,7 +605,7 @@ tr:hover td{background:rgba(232,115,41,0.02);}
 
 <div id="adminToast"></div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ========== دوال الدخول والخروج أولاً (لضمان عمل الزر) ==========
 let adminPass = localStorage.getItem('bentalem_adminPass') || 'bentalem2025';
 
@@ -1154,12 +1154,4 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginBtn) loginBtn.onclick = doLogin;
     const lgUser = document.getElementById('lgUser');
     const lgPass = document.getElementById('lgPass');
-    if (lgUser && lgPass) {
-        const enterHandler = (e) => { if (e.key === 'Enter') doLogin(); };
-        lgUser.addEventListener('keypress', enterHandler);
-        lgPass.addEventListener('keypress', enterHandler);
-    }
-});
-</script>
-</body>
-</html>
+    if (lgUser && lgPass
